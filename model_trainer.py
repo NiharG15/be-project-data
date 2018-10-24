@@ -114,9 +114,9 @@ class ModelTrainer(object):
                                       callbacks=[lr_scheduler, checkpointer, csvlogger, tensorboard])
 
         logging.info('-- Final Training Loss --')
-        logging.info('Loss: {:.5f}, MSE: {:.5f}'.format(history.history['loss'][0], history.history['mean_squared_error'][0]))
+        logging.info('Loss: {:.5f}, MSE: {:.5f}'.format(history.history['loss'][-1], history.history['mean_squared_error'][-1]))
         logging.info('-- Final Validation Loss --')
-        logging.info('Loss: {:.5f}, MSE: {:.5f}'.format(history.history['val_loss'][0], history.history['val_mean_squared_error'][0]))
+        logging.info('Loss: {:.5f}, MSE: {:.5f}'.format(history.history['val_loss'][-1], history.history['val_mean_squared_error'][-1]))
 
         test_data = self.get_data_flow(self.test_df)
         test_gen = test_data.get_data()

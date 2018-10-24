@@ -58,6 +58,8 @@ class ModelTrainer(object):
 
     def densenet_preprocess(self, img):
         """ Preprocessing function to be used with MapDataComponent """
+        img = np.expand_dims(img, axis=0)
+        img = keras.applications.densenet.preprocess_input(img.astype('float32'))
         return np.squeeze(img)
 
     def get_data_flow(self, df, batch_size=32):
